@@ -8,10 +8,11 @@ const Navbar = () => {
           <a className="nav__logo" href="/">Vuokra</a>
           <li className="nav__item"><a href="/">etusivu</a></li>
           <li className="nav__item"><a href="/">hae</a></li>
+          <li className="nav__item"><a href="/">jätä ilmoitus</a></li>
         </ul>
         <ul className="nav__items nav__items-actions">
           <li className="nav__item"><a href="/">kirjaudu</a></li>
-          <li className="nav__item"><a href="/">jätä ilmoitus</a></li>
+          <li className="nav__item"><a href="/">rekiströidy</a></li>
         </ul>
       </nav>
     </header>
