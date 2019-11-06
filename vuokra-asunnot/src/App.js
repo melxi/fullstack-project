@@ -1,8 +1,12 @@
-import React from 'react';
-import Navbar from './components/Navbar';
-import './App.css';
+import React from 'react'
+import { connect } from 'react-redux'
+import { userLogin } from './reducers/loginReducer'
+import Navbar from './components/Navbar'
+import './App.css'
 
-function App() {
+function App(props) {
+  console.log(props)
+  
   return (
     <div className="app">
       <Navbar />
@@ -10,4 +14,14 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+const mapDispatchToProps = {
+  userLogin
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
