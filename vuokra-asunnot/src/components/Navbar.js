@@ -1,6 +1,8 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { connect } from 'react-redux'
 
-const Navbar = () => {
+const Navbar = (props) => {  
   return (
     <header className="header">
       <nav className="nav">
@@ -10,13 +12,22 @@ const Navbar = () => {
           <li className="nav__item"><a href="/">hae</a></li>
           <li className="nav__item"><a href="/">jätä ilmoitus</a></li>
         </ul>
-        <ul className="nav__items nav__items-actions">
-          <li className="nav__item"><a href="/">kirjaudu</a></li>
-          <li className="nav__item"><a href="/">rekiströidy</a></li>
-        </ul>
+        {!props.user && <ul className="nav__items nav__items-actions">
+          <li className="nav__item"><Link to="/login">kirjaudu</Link></li>
+          <li className="nav__item"><Link to="/register">rekiströidy</Link></li>
+        </ul>}
+        {props.user && <ul className="nav__items nav__items-actions">
+          <li className="nav__item"><Link to="/">omat tiedot</Link></li>
+        </ul>}
       </nav>
     </header>
   )
 }
 
-export default Navbar
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(Navbar)

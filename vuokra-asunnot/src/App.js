@@ -1,15 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { userLogin } from './reducers/loginReducer'
+import { setUser } from './reducers/loginReducer'
 import Navbar from './components/Navbar'
+import LoginForm from './components/LoginForm'
+import RegisterForm from './components/RegisterForm'
 import './App.css'
 
 function App(props) {
-  console.log(props)
+  useEffect(() => {
+    props.setUser()
+  }, [])
   
   return (
     <div className="app">
-      <Navbar />
+      <Router>
+        <Navbar />
+        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/register" component={RegisterForm} />
+      </Router>
     </div>
   );
 }
@@ -21,7 +30,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-  userLogin
+  setUser
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
