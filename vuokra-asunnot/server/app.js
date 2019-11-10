@@ -5,8 +5,8 @@ const app = express()
 const config = require('./utils/config')
 const logger = require('./utils/logger')
 const middleware = require('./utils/middleware')
-const usersRouter = require('./controllers/users')
-const loginRouter = require('./controllers/login')
+const rentalsRouter = require('./controllers/rentals')
+const authRouter = require('./controllers/auth')
 
 logger.info('connecting to', config.MONGODB_URI)
 
@@ -22,8 +22,8 @@ mongoose.connect(config.MONGODB_URI, {
 app.use(bodyParser.json())
 app.use(middleware.requestLogger)
 
-app.use('/api/users', usersRouter)
-app.use('/api/login', loginRouter)
+app.use('/api/rentals', rentalsRouter)
+app.use('/api/auth', authRouter)
 
 app.get('/', (req, res) => {
   res.send('<h1>Melxi</h1>')

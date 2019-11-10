@@ -1,8 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { userLogout } from '../reducers/authReducer'
 
 const Navbar = (props) => {  
+  const handleClick = () => {
+    props.userLogout()
+  }
+
   return (
     <header className="header">
       <nav className="nav">
@@ -18,6 +23,7 @@ const Navbar = (props) => {
         </ul>}
         {props.user && <ul className="nav__items nav__items-actions">
           <li className="nav__item"><Link to="/">omat tiedot</Link></li>
+          <li className="nav__item"><Link to="/login" onClick={handleClick}>kirjaudu ulos</Link></li>
         </ul>}
       </nav>
     </header>
@@ -30,4 +36,8 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Navbar)
+const mapDispatchToState = {
+  userLogout
+}
+
+export default connect(mapStateToProps, mapDispatchToState)(Navbar)
