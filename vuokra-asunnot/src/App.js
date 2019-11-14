@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setUser } from './reducers/authReducer'
 import Navbar from './components/Navbar'
+import Sidebar from './components/Sidebar'
 import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
 import './App.css'
@@ -16,6 +17,7 @@ function App(props) {
     <div className="app">
       <Router>
         <Navbar />
+        <Sidebar />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/register" component={RegisterForm} />
       </Router>
