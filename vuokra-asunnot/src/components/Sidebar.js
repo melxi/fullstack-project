@@ -6,23 +6,24 @@ import userIcon from '../assets/icons/avatar.svg'
 
 
 const Sidebar = (props) => {
+  const hideWhenVisible = { right: props.visible ? '0' : '-250px'}
+
   const handleClick = () => {
     props.userLogout()
   }
 
-  if (!props.user) {
-    return null
-  }
+  if (!props.user) return null
 
   return (
-    <div className="sidebar">
-      <span className="close">&times;</span>
+    <div className="sidebar" style={hideWhenVisible}>
+      <span className="close" onClick={() => props.setVisible(false)}>&times;</span>
       <div className="user-details">
         <div className="user-details__image">
           <img src={userIcon} alt="avatar"/>
         </div>
         <div className="user-details__name">
-          {props.user.firstName} {props.user.lastName}
+          <p>{props.user.firstName} {props.user.lastName}</p>
+          <span>{props.user.email}</span>
         </div>
       </div>
       <ul className="user-menu-list">

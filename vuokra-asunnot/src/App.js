@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { setUser } from './reducers/authReducer'
@@ -9,6 +9,7 @@ import RegisterForm from './components/RegisterForm'
 import './App.css'
 
 function App(props) {
+  const [visible, setVisible] = useState(false)
   useEffect(() => {
     props.setUser()
   }, [])
@@ -16,8 +17,8 @@ function App(props) {
   return (
     <div className="app">
       <Router>
-        <Navbar />
-        <Sidebar />
+        <Navbar setVisible={setVisible}/>
+        <Sidebar visible={visible} setVisible={setVisible}/>
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/register" component={RegisterForm} />
       </Router>

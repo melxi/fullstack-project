@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { useField } from '../hooks/'
 import { userLogin } from '../reducers/authReducer'
+import { setNotification } from '../reducers/notificationReducer'
+import Notification from './Notification'
 
-const LoginForm = (props) => {  
+const LoginForm = (props) => {
+  console.log(props)
   const [email, emailReset] = useField('email')
   const [password, passwordReset] = useField('password')
   
@@ -23,6 +26,7 @@ const LoginForm = (props) => {
       props.history.push('/')
     } catch(exception) {
       console.log(exception);
+      props.setNotification('email or password incorrect', 'error')
     }
   }
   
@@ -34,6 +38,7 @@ const LoginForm = (props) => {
       <div className="form-container">
         <form onSubmit={handleSubmit} className="form form--sign-in">
           <h2 className="form__title">Kirjaudu sisään</h2>
+          <Notification />
           <input className="form__input" {...email} placeholder="Sähköposti" />
           <input className="form__input" {...password} placeholder="Salasana" />
           <Link className="form__link" to="/forgot">Unohdtitko salasanan?</Link>
@@ -52,12 +57,14 @@ const LoginForm = (props) => {
 
 const mapStateToProps = state => {
   return {
-    user: state.user
+    user: state.user,
+    notification: state.notification
   }
 }
 
 const mapDispatchToProps = {
-  userLogin
+  userLogin,
+  setNotification
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm)

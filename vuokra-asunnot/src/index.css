@@ -11,6 +11,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-family: 'Open Sans', 'Helvetica', sans-serif;
+  overflow: hidden;
 }
 
 code {

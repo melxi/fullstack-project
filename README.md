@@ -10,4 +10,5 @@
 | 9.11. | 2    | created and styled loginform and registerform components |
 | 10.11.| 2    | refactored loginRouter and added register functionality |
 | 14.11.| 2    | sidebar component created and styled             |
-| oa    | 9    | | 
+| 14.11.| 1    | notification reducer with styled component       |
+| oa    | 12   | | 
