@@ -21,4 +21,9 @@ const register = async (credentials) => {
   return response.data
 }
 
-export default { setToken, destroyToken, login, register }
+const update = async (credentials) => {
+  const response = await axios.put(`${baseUrl}/user-details`, credentials)
+  return response.data
+}
+
+export default { setToken, destroyToken, login, register, update }

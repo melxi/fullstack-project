@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 authRouter.post('/register', async (req, res, next) => {
   const body = req.body
 
-  if (!body.password || body.password.length < 5) {
+  if (!body.password || body.password.length < 4) {
     res.status(400).send({ error: "The password must contain at least 5 characters" })
   } else {
     const saltsRound = 10
@@ -15,6 +15,10 @@ authRouter.post('/register', async (req, res, next) => {
       email: body.email,
       firstName: body.firstName,
       lastName: body.lastName,
+      phone: body.phone === undefined ? '' : body.phone,
+      index: body.index === undefined ? '' : body.index,
+      address: body.address === undefined ? '' : body.address,
+      city: body.city === undefined ? '' : body.city,
       passwordHash
     })
 
@@ -27,7 +31,7 @@ authRouter.post('/register', async (req, res, next) => {
   }
 })
 
-authRouter.post('/login', async (req, res) => {
+authRouter.post('/login', async (req, res, next) => {
   const body = req.body
 
   const user = await User.findOne({ email: body.email })
@@ -48,10 +52,35 @@ authRouter.post('/login', async (req, res) => {
 
   const token = jwt.sign(userForToken, process.env.SECRET)
   
-  res
-    .status(200)
-    .send({ token, email: user.email, firstName: user.firstName, lastName: user.lastName })
-  
+  try {
+    res
+      .status(200)
+      .send({ token, email: user.email, firstName: user.firstName, lastName: user.lastName })
+  } catch (exception) {
+    next(exception)
+  }
+})
+
+authRouter.put('/user-details', async (req, res, next) => {
+  const body = req.body
+
+  const user = {
+    email: body.email,
+    firstName: body.firstName,
+    lastName: body.lastName,
+    phone: body.phone,
+    index: body.index,
+    address: body.address,
+    city: body.city
+  }
+
+  try {
+    const updatedUser = await User.findOneAndUpdate(body.email, user, { new: true })
+
+    res.json(updatedUser)
+  } catch(exception) {
+    next(exception)
+  }
 })
 
 module.exports = authRouter

@@ -18,7 +18,7 @@ const Navbar = (props) => {
           <li className="nav__item"><Link to="/register">rekiströidy</Link></li>
         </ul>}
         {props.user && <ul className="nav__items nav__items-actions">
-          <li className="nav__item"><Link to="/" onClick={() => props.setVisible(true)}>omat tiedot</Link></li>
+          <li className="nav__item"><a onClick={() => props.setVisible(true)}>omat tiedot</a></li>
         </ul>}
       </nav>
     </header>

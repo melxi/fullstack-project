@@ -10,5 +10,7 @@
 | 9.11. | 2    | created and styled loginform and registerform components |
 | 10.11.| 2    | refactored loginRouter and added register functionality |
 | 14.11.| 2    | sidebar component created and styled             |
-| 14.11.| 1    | notification reducer with styled component       |
-| oa    | 12   | | 
+| 15.11.| 1    | notification reducer with styled component       |
+| 16.11.| 2    | user details component created and styled        |
+| 17.11.| 1    | set up backend for user details update           |
+| oa    | 15   | | 

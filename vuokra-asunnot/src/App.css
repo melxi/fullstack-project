@@ -34,6 +34,7 @@
   font-size: 16px;
   text-decoration: none;
   text-transform: uppercase;
+  cursor: pointer;
 }
 
 .sidebar {
@@ -45,6 +46,7 @@
   background-color: #fff;
   -webkit-box-shadow: 0px 0px 23px -2px rgba(0, 0, 0, 0.83);
   box-shadow: 0px 0px 23px -2px rgba(0, 0, 0, 0.83);
+  z-index: 200;
   transition: all 1s ease;
 }
 
@@ -105,6 +107,10 @@
 	overflow: hidden;
 }
 
+.title {
+  margin-left: 50px;
+}
+
 .notification {
   width: 100%;
   margin: 15px 0;
@@ -122,6 +128,7 @@
 }
 
 .form-container {
+  display: flex;
   margin: 0 auto;
   max-width: 100%;
   min-height: 480px;
@@ -133,29 +140,55 @@
 .form {
   height: 100%;
   padding: 0 50px;
-  position: absolute;
-  top: 0;
   display: flex;
-  align-items: center;
   justify-content: center;
   flex-direction: column;
   background-color: #FFFFFF;
-  text-align: center;
+}
+
+.form--user-details {
+  flex: 1 1 60%;
+  padding-right: 25px;
+}
+
+.form--user-password {
+  flex: 1 1 40%;
+  padding-left: 25px;
 }
     
 .form--sign-in {
+  position: absolute;
+  top: 0;
   width: 50%;
   left: 0;
+  align-items: center;
 }
 
 .form--sign-up {
+  position: absolute;
+  top: 0;
   width: 50%;
   left: 50%;
+  align-items: center;
 }
 
 .form__title {
   margin: 0;
   font-weight: bold;
+}
+
+.form__groups {
+  display: flex;
+}
+
+.form__group {
+  flex: 1 1 50%;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.form__group:last-child {
+  margin-right: 0;
 }
 
 .form__text {
@@ -176,6 +209,15 @@
   padding: 12px 15px;
 	background-color: #EEE;
 	border: none;
+}
+
+.form__input--index {
+  width: 30%;
+  margin-right: 10px;
+}
+
+.form__input--city {
+  width: calc(70% - 10px);
 }
 
 .form__link {
@@ -210,6 +252,12 @@
 	background-color: transparent;
   border-color: #FFFFFF;
   text-decoration: none;
+}
+
+.btn--save, .btn--change {
+  margin-top: 50px;
+  width: 70%;
+  align-self: center;
 }
 
 .form-panel {

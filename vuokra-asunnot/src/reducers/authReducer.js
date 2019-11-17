@@ -8,6 +8,8 @@ const authReducer = (state = null, action) => {
       return null
     case 'USER_REGISTER':
       return action.data
+    case 'USER_UPDATE':
+      return action.data
     default:
       return state
   }
@@ -60,6 +62,18 @@ export const userRegister = credentials => {
       data: user
     })
     return user
+  }
+}
+
+export const userUpdate = credentials => {
+  return async dispatch => {
+    const updatedUser = await authService.update(credentials)
+    console.log(updatedUser)
+    dispatch({
+      type: 'USER_UPDATE',
+      data: updatedUser
+    })
+    return updatedUser
   }
 }
 

@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import Sidebar from './components/Sidebar'
 import LoginForm from './components/LoginForm'
 import RegisterForm from './components/RegisterForm'
+import UserDetails from './components/UserDetails'
 import './App.css'
 
 function App(props) {
@@ -21,6 +22,7 @@ function App(props) {
         <Sidebar visible={visible} setVisible={setVisible}/>
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/register" component={RegisterForm} />
+        <Route exact path="/user-details" component={UserDetails} />
       </Router>
     </div>
   );

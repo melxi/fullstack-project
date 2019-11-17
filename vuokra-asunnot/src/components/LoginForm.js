@@ -7,7 +7,6 @@ import { setNotification } from '../reducers/notificationReducer'
 import Notification from './Notification'
 
 const LoginForm = (props) => {
-  console.log(props)
   const [email, emailReset] = useField('email')
   const [password, passwordReset] = useField('password')
   
